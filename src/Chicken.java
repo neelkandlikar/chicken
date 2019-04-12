@@ -8,9 +8,8 @@ public class Chicken extends Creature {
     }
 
     @Override
-    public void move() {
-        ArrayList<Graph.Node> neighbors = (ArrayList<Graph.Node>) getCurrentRoom().getNeighbors().values();
-        Graph.Node room = neighbors.get((int) (Math.random() * neighbors.size()));
-        moveToRoom(this, room);
+    public void move(Player p) {
+        moveToRoom(this, getRandomAdjacentRoom());
+        //chicken moves to random room
     }
 }

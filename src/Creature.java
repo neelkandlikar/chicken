@@ -10,7 +10,7 @@ public abstract class Creature {
     }
 
 
-    public abstract void move();
+    public abstract void move(Player p);
 
     public  Graph.Node getRandomAdjacentRoom(){
         ArrayList<Graph.Node> neighbors = (ArrayList<Graph.Node>) currentRoom.getNeighbors().values();
@@ -23,6 +23,7 @@ public abstract class Creature {
     }
 
     protected  void moveTowards(Graph.Node r){
+
 
     }
 
