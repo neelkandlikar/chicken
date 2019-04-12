@@ -10,6 +10,9 @@ public class Wumpus extends Creature {
     @Override
     public void move(Player p) {
         Graph.Node playerCurrentRoom = p.getCurrentRoom();
+        if(playerCurrentRoom.equals(getCurrentRoom())){
+            System.out.println("The wumpus is in the same room as the player!");
+        }
         Graph.Node toMove = null;
         ArrayList<Graph.Node> neighbors = (ArrayList<Graph.Node>) getCurrentRoom().getNeighbors().values();
 

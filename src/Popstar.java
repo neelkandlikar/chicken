@@ -8,6 +8,10 @@ public class Popstar extends Creature {
 
     @Override
     public void move(Player p) {
+        if(p.getCurrentRoom().equals(getCurrentRoom())){
+            System.out.println("The popstar is in the same room as the player!");
+            return;
+        }
         Graph.Node playerCurrentRoom = p.getCurrentRoom();
         Graph.Node toMove = null;
         ArrayList<Graph.Node> neighbors = (ArrayList<Graph.Node>) getCurrentRoom().getNeighbors().values();

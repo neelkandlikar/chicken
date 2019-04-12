@@ -34,6 +34,11 @@ public class Graph {
         return nodes.get(name);
     }
 
+    public Node getRandomNode() {
+        ArrayList<Node> nodeArrayList = (ArrayList<Node>) nodes.values();
+        return nodeArrayList.get((int) (Math.random() * nodeArrayList.size()));
+    }
+
 
     class Node {
 
@@ -80,7 +85,7 @@ public class Graph {
             return items;
         }
 
-        public ArrayList<Creature> getCreatures(){
+        public ArrayList<Creature> getCreatures() {
             return creatures;
         }
 
@@ -109,31 +114,33 @@ public class Graph {
             items.add(new Item(name, description));
         }
 
-        public void addCreature(Creature c){
+        public void addCreature(Creature c) {
             creatures.add(c);
         }
 
-        public void removeCreature(Creature c){
-           for(int i = creatures.size() - 1; i >= 0; i--){
-               if(c.equals(creatures.get(i))){
-                   creatures.remove(creatures.get(i));
-                   break;
-               }
-           }
+        public void removeCreature(Creature c) {
+            for (int i = creatures.size() - 1; i >= 0; i--) {
+                if (c.equals(creatures.get(i))) {
+                    creatures.remove(creatures.get(i));
+                    break;
+                }
+            }
         }
-
 
 
         public void addItem(Item i) {
             items.add(i);
+            System.out.println("Added item " + i.getName());
         }
 
         public void removeItem(String name) {
-            for (int i = items.size() -1; i >= 0; i--) {
+            for (int i = items.size() - 1; i >= 0; i--) {
                 if (items.get(i).getName().equals(name)) {
                     items.remove(i);
+                    return;
                 }
             }
+            System.out.println("Unable to find item in room");
         }
 
     }

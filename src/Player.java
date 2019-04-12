@@ -14,7 +14,7 @@ public class Player {
     }
 
     public void addItem(String name, String description){
-        items.add(new Item(name, description, null));
+        items.add(new Item(name, description));
     }
 
     public void addItem(Item i){
@@ -22,7 +22,7 @@ public class Player {
     }
 
     public void removeItem(String name){
-        for(int i = items.size() -1; i >= 0; i--){a
+        for(int i = items.size() -1; i >= 0; i--){
             if(items.get(i).getName().equals(name)){
                 items.remove(i);
             }
@@ -68,6 +68,6 @@ public class Player {
     }
 
     public void look(){
-            //TODO
+        System.out.println("These are the rooms that you can visit ");
     }
 }
