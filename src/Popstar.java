@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Popstar extends Creature {
 
@@ -14,14 +15,16 @@ public class Popstar extends Creature {
         }
         Graph.Node playerCurrentRoom = p.getCurrentRoom();
         Graph.Node toMove = null;
-        ArrayList<Graph.Node> neighbors = (ArrayList<Graph.Node>) getCurrentRoom().getNeighbors().values();
+        Collection<Graph.Node> neighborsOld =  getCurrentRoom().getNeighbors().values();
+        ArrayList<Graph.Node> neighbors = new ArrayList<>(neighborsOld);
 
         for (int i = 0; i < neighbors.size(); i++) {
             if (neighbors.get(i).equals(playerCurrentRoom)) {
                 toMove = neighbors.get(i);
                 break;
             } else {
-                ArrayList<Graph.Node> neighborsNeighbors = (ArrayList<Graph.Node>) neighbors.get(i).getNeighbors().values();
+               Collection neighborsNeighborsOld =  neighbors.get(i).getNeighbors().values();
+               ArrayList<Graph.Node> neighborsNeighbors = new ArrayList<>(neighborsNeighborsOld);
                 for (int j = 0; j < neighborsNeighbors.size(); j++) {
                     if (neighborsNeighbors.get(j).equals(playerCurrentRoom)) {
                         toMove = neighbors.get(i);

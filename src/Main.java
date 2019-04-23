@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -38,22 +39,31 @@ public class Main {
         Player p = new Player("Neel", "god");
         p.setCurrentRoom(g.getNode("hall"));
 
-        Wumpus w = new Wumpus(g.getRandomNode());
-        Popstar p = new Popstar(g.getRandomNode());
+        Wumpus wumpus = new Wumpus(g.getRandomNode());
+        Popstar popstar = new Popstar(g.getRandomNode());
+        Chicken c1 = new Chicken(g.getRandomNode());
+        c1.setName("Chicken 1");
+        Chicken c2 = new Chicken(g.getRandomNode());
+        c2.setName("Chicken 2");
+        ArrayList<Chicken> chickens = new ArrayList<>();
+        chickens.add(c1);
+        chickens.add(c2);
+
+
         // creating a wumpus and popstar in a random room in the graph.
 
 
         System.out.println("You are currently in the " + p.getCurrentRoom().getName());
 
 
-        startGame(p, g);
+        startGame(p, g, wumpus, popstar, chickens);
 
 
 
     }
 
 
-    private static void startGame(Player p, Graph g) {
+    private static void startGame(Player p, Graph g, Wumpus w, Popstar popstar, ArrayList<Chicken> chickens) {
 
         String response;
         Scanner scanner = new Scanner(System.in);
@@ -64,6 +74,7 @@ public class Main {
             response = scanner.nextLine();
             response = response.trim().toLowerCase();
             if (response.equals("quit")) {
+                System.out.println("Thanks for playing!");
                 System.exit(0);
             } else if (response.equals("help")) {
                 Commands.help();
@@ -91,9 +102,24 @@ public class Main {
                 }
 
             }
+
+            movePlayers( w,  p,  chickens,   popstar);
+        }
+    }
+
+    private static void movePlayers(Wumpus w, Player p   , ArrayList<Chicken> chickens, Popstar popstar) {
+
+        w.move(p);
+        popstar.move(p);
+        for(Chicken c: chickens){
+            c.move(p);
         }
 
+
     }
+
+
+
 
 
 }

@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Graph {
 
@@ -35,8 +32,9 @@ public class Graph {
     }
 
     public Node getRandomNode() {
-        ArrayList<Node> nodeArrayList = (ArrayList<Node>) nodes.values();
-        return nodeArrayList.get((int) (Math.random() * nodeArrayList.size()));
+        Collection<Node> nodeArrayList = (nodes.values());
+       Object[] nodes = nodeArrayList.toArray();
+        return (Node) nodes[((int) (Math.random() * nodeArrayList.size()))];
     }
 
 

@@ -42,6 +42,7 @@ public class Commands {
 
     public static void look(Player p) {
         System.out.println(p.getCurrentRoom().getItems());
+        System.out.println("You can go to " +  p.getCurrentRoom().getNeighbors().keySet());
     }
 
     public static void addRoom(String s, Player p,  Graph g) {
