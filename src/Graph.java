@@ -75,7 +75,7 @@ public class Graph {
             return neighbors;
         }
 
-        public void setNeighbors(HashMap<String, Node> neighbors) {
+        private void setNeighbors(HashMap<String, Node> neighbors) {
             this.neighbors = neighbors;
         }
 
@@ -87,11 +87,11 @@ public class Graph {
             return creatures;
         }
 
-        public void setItems(ArrayList<Item> items) {
+        private void setItems(ArrayList<Item> items) {
             this.items = items;
         }
 
-        public void setDescription(String description) {
+        private void setDescription(String description) {
             this.description = description;
         }
 
